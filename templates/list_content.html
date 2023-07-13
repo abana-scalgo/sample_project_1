@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <h2>CMS Content List</h2>
+    <ul>
+        {% for item in contents %}
+        <li>
+            <h3>{{ item.heading }}</h3>
+            <p>{{ item.content }}</p>
+            <h4>{{ item.created_date }}</h4>
+            <a href="{% url 'edit_content' item.pk %}">Edit</a><br>
+            <a href="{% url 'delete_content' item.pk %}">Delete</a>
+        </li>
+        {% empty %}
+        <li>Empty list</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_content' %}">Add</a>
+</center>
+{% endblock %}
